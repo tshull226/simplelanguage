@@ -107,6 +107,7 @@ import com.oracle.truffle.sl.runtime.SLContext;
 import com.oracle.truffle.sl.runtime.SLFunction;
 import com.oracle.truffle.sl.runtime.SLFunctionRegistry;
 import com.oracle.truffle.sl.runtime.SLNull;
+import cs598ga.shull.prolog.ast.PrologParserAdapter;
 
 /**
  * SL is a simple language to demonstrate and showcase features of Truffle. The implementation is as
@@ -209,6 +210,7 @@ public final class SLLanguage extends TruffleLanguage<SLContext> {
 
     @Override
     protected CallTarget parse(ParsingRequest request) throws Exception {
+        System.out.println("need to split off");
         Source source = request.getSource();
         Map<String, RootCallTarget> functions;
         /*
@@ -216,8 +218,11 @@ public final class SLLanguage extends TruffleLanguage<SLContext> {
          * the functions with the SLContext happens lazily in SLEvalRootNode.
          */
         if (request.getArgumentNames().isEmpty()) {
+		System.out.println("only this one");
+            functions = PrologParserAdapter.parseProlog(this, source);
             functions = Parser.parseSL(this, source);
         } else {
+		System.out.println("this is happening");
             StringBuilder sb = new StringBuilder();
             sb.append("function main(");
             String sep = "";
@@ -270,6 +275,7 @@ public final class SLLanguage extends TruffleLanguage<SLContext> {
 
     @Override
     protected boolean isObjectOfLanguage(Object object) {
+	    assert false : "haven't implemented this";
         if (!(object instanceof TruffleObject)) {
             return false;
         }
@@ -293,6 +299,7 @@ public final class SLLanguage extends TruffleLanguage<SLContext> {
 
     @Override
     protected Object findMetaObject(SLContext context, Object value) {
+	    assert false : "haven't implemented this";
         if (value instanceof Number || value instanceof SLBigNumber) {
             return "Number";
         }
@@ -313,6 +320,7 @@ public final class SLLanguage extends TruffleLanguage<SLContext> {
 
     @Override
     protected SourceSection findSourceLocation(SLContext context, Object value) {
+	    assert false : "haven't implemented this";
         if (value instanceof SLFunction) {
             SLFunction f = (SLFunction) value;
             return f.getCallTarget().getRootNode().getSourceSection();
@@ -322,6 +330,7 @@ public final class SLLanguage extends TruffleLanguage<SLContext> {
 
     @Override
     public Iterable<Scope> findLocalScopes(SLContext context, Node node, Frame frame) {
+    	assert false : "haven't implemented this";
         final SLLexicalScope scope = SLLexicalScope.createScope(node);
         return new Iterable<Scope>() {
             @Override

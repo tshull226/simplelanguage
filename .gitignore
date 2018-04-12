@@ -11,5 +11,6 @@ graalvm/
 .project
 /bin/
 /Coco.jar
+.DS_Store
 
 *.swp

@@ -1,3 +1,4 @@
 #!/bin/bash
 
-./sl language/tests/HelloWorld.sl
+source set_env.sh
+./sl examples/helloworld.pl

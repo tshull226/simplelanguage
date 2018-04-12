@@ -29,9 +29,26 @@
           <argLine>-XX:-UseJVMCIClassLoader -Xbootclasspath/a:../graalvm/jre/lib/truffle/truffle-api.jar:../graalvm/jre/lib/truffle/locator.jar:../graalvm/jre/lib/truffle/truffle-nfi.jar:../graalvm/Contents/Home/jre/lib/truffle/truffle-api.jar:../graalvm/Contents/Home/jre/lib/truffle/locator.jar:../graalvm/Contents/Home/jre/lib/truffle/truffle-nfi.jar</argLine>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr4-maven-plugin</artifactId>
+        <version>4.7</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>antlr4</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.antlr</groupId>
+          <artifactId>antlr4-maven-plugin</artifactId>
+          <version>4.7</version>
+        </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.1</version>
@@ -44,6 +61,11 @@
     </pluginManagement>
   </build>
   <dependencies>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-runtime</artifactId>
+      <version>4.7</version>
+    </dependency>
     <dependency>
       <groupId>com.oracle.truffle</groupId>
       <artifactId>truffle-api</artifactId>

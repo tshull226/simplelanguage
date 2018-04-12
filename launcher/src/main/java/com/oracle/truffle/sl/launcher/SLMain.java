@@ -94,6 +94,7 @@ public final class SLMain {
             return 1;
         }
         out.println("== running on " + context.getEngine());
+        out.println("let's see what happens");
 
         try {
             Value result = context.eval(source);

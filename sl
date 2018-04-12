@@ -41,7 +41,7 @@ fi
 #######################################################################
 if [[ "$GRAALVM_VERSION" != "" ]]; then
     PROGRAM_ARGS=""
-    JAVA_ARGS=""
+    JAVA_ARGS="-ea "
 
     for opt in "$@"
     do

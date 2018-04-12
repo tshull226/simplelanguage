@@ -11,3 +11,5 @@ graalvm/
 .project
 /bin/
 /Coco.jar
+
+*.swp
